@@ -5,17 +5,15 @@ Tanzu Application Platform Hands-On-Labs 페이지 입니다.
 본 가이드에서 다루는 Tanzu 설치 솔루션 및 버전은 다음과 같습니다.
 |제품명|Version|
 |---|---|
-|TAP|1.2.1|
+|TAP|1.4.1|
 
 * TAP설치를 위해서는 아래와 같은 Kubernetes Cluster가 필요합니다. 이 Lab에서는 TKG를 이용해서 진행합니다.
-  - Kubernetes v1.22 or v1.23 이상 필요
+  - Kubernetes v1.23 ~ v1.25
   - AKS / EKS / GKE / Minikube / TKGm / TKGs (vSphere with Tanzu v7.0 U3a)
 
 
-## 0. 사전 준비
-- DNS Server
-- Avi Load Balancer
-- [Jumpbox 준비 및 TKG 설치하기](./tap/jumpbox-prepare.md)
+## 0. 환경 확인
+
 
 ## 1. TAP 환경 구성
 - [TAP 설치](./install/install-on-vsphere-hol.md)
@@ -47,14 +45,6 @@ OOTB Basic Supply Chain을 Testing and Scanning으로 변경합니다.
 - [IDE 설치하기](./tap/ide.md)
 - [동적 배포와 원격 디버깅](./tap/hotdeploy_debug.md)
 
-## 8. TAP Learning Center
-TAP에서 제공하는 Learning Center를 확인합니다
-- [Learning Center](./tap/learning-center.md)
-
-
-## 9. Optional Lab
-- [인터넷 차단 환경 구성](./tap/full-air-gapped.md)
-- [멀티 클러스터](./tap/multi-cluster.md)
 
 
 
