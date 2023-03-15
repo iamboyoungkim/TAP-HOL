@@ -9,12 +9,6 @@
 * 개인 Git 저장소에 업로드 합니다. 
 * TAP GUI에서 app live view를 보기 위한 app을 배포합니다.
 
-### 0. Application Accelerator를 이용해 프로젝트 생성
-사전에 App Accelerator를 사용해 새 프로젝트를 생성해 보겠습니다.    
-tap-gui에 들어가 아래와 같이 메뉴 및 버튼을 클릭합니다.
-![](../images/acc-01.png)
-
-TBU   
 
 ### 1.앱 배포
 다음과 같이 2가지 방법으로 TAP를 이용하여 워크로드를 생성할 수 있습니다.
@@ -98,21 +92,19 @@ URL: https://tanzu-java-web-app.default.tanzu.lab
 
 ![](../images/tap-workload-final.png)
 
-<br/>
-여기부터 TBU    
-<br/>
+
 ### 3. 워크로드 삭제   
 > 워크로드 삭제
 ```cmd
 tanzu apps workload delete tanzu-java-web-app
 ```
 
-![](../images/tap-07.png)
+![](../images/workload-delete.png)
 
 
 > 기타 Tanzu CLI 참조
 
-https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.2/tap/GUID-cli-plugins-apps-command-reference.html
+https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.4/tap/cli-plugins-tanzu-cli.html
 
 
 
@@ -135,7 +127,7 @@ metadata:
 spec:
   source:
     git:
-      url: https://github.com/kshong05311129/tanzu-java-web-app-tap-hol
+      url: https://github.com/iamboyoungkim/tanzu-java-web-app-hd
       ref:
         branch: main
 ```
@@ -145,6 +137,10 @@ spec:
 tanzu apps workload apply -f workload.yaml
 ```
 
-![](../images/tap-08.png)
-위와 같은 출력이 나타나면 "y" 를 입력하고 계속해서 워크로드 생성을 진행합니다.
+"y" 를 입력하고 계속해서 워크로드 생성을 진행합니다.
+![](../images/workload-apply.png)
+
+CLI 과정과 동일하게, 로그를 조회하고 배포되면 URL을 통해 최종 확인합니다.   
+
+본 단계를 성공적으로 마무리 하셨습니다.   
 
