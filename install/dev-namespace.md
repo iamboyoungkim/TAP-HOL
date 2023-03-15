@@ -4,11 +4,25 @@
 - 단일 사용자 액세스 활성화
 - 쿠버네티스 RBAC을 사용하여 추가 사용자 액세스 활성화
 
-본 가이드에서는 단일 사용자 액세스 활성화 방법에 대해서만 설명하며, 쿠버네티스 RBAC을 사용한 추가 사용자 엑세스 활성화 방법에 대해서는 [네임스페이스 구성 방법에 대한 링크](https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.2/tap/GUID-set-up-namespaces.html)를 참고하시기 바랍니다.
+본 가이드에서는 단일 사용자 액세스 활성화 방법에 대해서만 설명하며, 쿠버네티스 RBAC을 사용한 추가 사용자 엑세스 활성화 방법에 대해서는 [네임스페이스 구성 방법에 대한 링크](https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.4/tap/namespace-provisioner-legacy-manual-namespace-setup.html)를 참고하시기 바랍니다.
 
-본 가이드에서는 개발자용 네임스페이스로 default 네임스페이스를 사용합니다.
+본 가이드에서는 개발자용 네임스페이스로 test 네임스페이스를 사용합니다.
 
-## 1. 레지스트리 크리덴셜 추가
+## 0. 네임스페이스 생성
+test 네임스페이스를 다음과 같이 생성합니다.
+~~~
+kubectl create ns test
+~~~
+
+## 1. 환경변수 설정
+|변수명|설명|
+|------|---|
+|REGISTRY-SERVER|사설 레지스트리 접속 FQDN|
+|REGISTRY-USERNAME|사설 레지스트리 접속 ID|
+|REGISTRY-PASSWORD|사설 레지스트리 접속 비밀번호|
+|YOUR-NAMESPACE|워크로드를 배포할 네임스페이스 명|
+
+## 2. 레지스트리 크리덴셜 추가
 이미지 레지스트리 크리덴셜을 다음과 같이 추가합니다.
 ```
 tanzu secret registry add registry-credentials --server $INSTALL_REGISTRY_HOSTNAME --username $INSTALL_REGISTRY_USERNAME --password $INSTALL_REGISTRY_PASSWORD --namespace default
@@ -19,15 +33,10 @@ tanzu secret registry add registry-credentials --server $INSTALL_REGISTRY_HOSTNA
 kubectl create secret docker-registry registry-credentials --docker-server=$INSTALL_REGISTRY_HOSTNAME --docker-username=$INSTALL_REGISTRY_USERNAME --docker-password=$INSTALL_REGISTRY_PASSWORD --namespace default
 ```
 
-명령어에 사용된 관련 변수 정보
-|변수명|설명|
-|------|---|
-|REGISTRY-SERVER|사설 레지스트리 접속 FQDN|
-|REGISTRY-USERNAME|사설 레지스트리 접속 ID|
-|REGISTRY-PASSWORD|사설 레지스트리 접속 비밀번호|
-|YOUR-NAMESPACE|워크로드를 배포할 네임스페이스 명|
 
-## 2. 네임스페이스에 권한 부여
+
+
+## 3. 네임스페이스에 권한 부여
 네임스페이스에 부여할 권한 관련 YAML 파일은 [여기](https://raw.githubusercontent.com/tanzukorea/tanzu-install/main/tap/set-up-ns.yaml)를 참고하여 생성합니다.
 ```
 kubectl -n YOUR-NAMESPACE apply -f set-up-ns.yaml
