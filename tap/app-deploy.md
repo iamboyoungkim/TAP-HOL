@@ -35,9 +35,9 @@ tanzu apps workload create tanzu-java-web-app \
 --namespace default
 ```
 
-![](../images/tap-01-01.png)
+![](../images/tap-workload-01.png)
 
-
+위 사진과 같이 workload가 생성됩니다. 아래 log 보기 명령어와 status 보기 명령어를 참고해 배포 상태를 조회합니다.
 
 
 
