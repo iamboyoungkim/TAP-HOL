@@ -11,4 +11,3 @@
 
 ## 0. 환경 접속
 Putty 에 접속해 
-  - [설치 방법](../tap/jumpbox-prepare.md)
