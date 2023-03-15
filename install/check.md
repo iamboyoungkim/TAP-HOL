@@ -9,5 +9,21 @@
 
 <br/>
 
-## 0. 환경 접속
-Putty 에 접속해 
+## 0. 환경 정보 확인
+### 0. 접속정보
+Microsoft Remote Desktop에 접속합니다. 바탕화면의 접속정보.txt 파일을 클릭하면 HOL 환경에 접근하는 방법을 확인 가능합니다.    
+
+### 1. Jumpbox 접속
+Tanzu Kubernetes Grid 및 Tanzu Application Platform을 사용하기 위해서는 Jumpbox VM이 필요합니다.    
+바탕화면의 Putty를 클릭해, Saved Session에서 Jumpbox를 클릭해 접속합니다.   
+로그인 창이 나오면 비밀번호 (VMware1!) 를 입력합니다. 
+![](../images/putty.png)  
+
+### 2. TAP 설치 확인
+Tanzu Application Platform에서 Tanzu CLI를 사용해 TAP가 성공적으로 설치되었는지를 확인합니다.   
+~~~
+tanzu package installed list -A
+~~~
+아래 캡쳐와 같이 namespace에 설치된 package들의 status가 Reconcile Succeed 라면 다음 단계로 이동합니다.
+![](../images/package_installed.png)  
+
