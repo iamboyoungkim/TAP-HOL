@@ -15,8 +15,8 @@ Tanzu Application Platform Hands-On-Labs 페이지 입니다.
 ## 0. 환경 확인
 
 
-## 1. TAP 환경 구성
-- [TAP 설치](./install/install-on-vsphere-hol.md)
+## 1. TAP 환경 확인 및 구성
+- [설치 환경 확인](./install/check.md)
 - [개발자용 네임스페이스 설정](./install/dev-namespace.md)
 
 ## 2. 애플리케이션 배포
