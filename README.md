@@ -22,6 +22,7 @@ Tanzu Application Platform Hands-On-Labs 페이지 입니다.
 ## 2. 애플리케이션 배포
 간단한 Spring Boot 애플리케이션을 TAP에 배포합니다.
 - [애플리케이션 배포](./tap/app-deploy.md)
+- [App Live View] (./tap/app-live-view.md)
 
 ## 3. 배포한 애플리케이션 등록
 배포한 applications을 등록하고 GUI로 확인합니다.
