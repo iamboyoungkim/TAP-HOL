@@ -14,6 +14,8 @@
 tap-gui에 들어가 아래와 같이 메뉴 및 버튼을 클릭합니다.
 ![](../images/acc-01.png)
 
+TBU   
+
 ### 1.앱 배포
 다음과 같이 2가지 방법으로 TAP를 이용하여 워크로드를 생성할 수 있습니다.
 * tanzu CLI를 이용하여 생성
@@ -96,9 +98,10 @@ URL: https://tanzu-java-web-app.default.tanzu.lab
 
 ![](../images/tap-workload-final.png)
 
-
-### 3. 워크로드 삭제
-
+<br/>
+여기부터 TBU    
+<br/>
+### 3. 워크로드 삭제   
 > 워크로드 삭제
 ```cmd
 tanzu apps workload delete tanzu-java-web-app
