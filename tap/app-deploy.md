@@ -24,7 +24,6 @@
 <br/>
 **주의 : namespace는 앞에서 워크로드 배포를 위한 개발자용 네임스페이스 구성시 설정했던 namespace로 사용합니다.** <br/>
 
-`
 ```cmd
 tanzu apps workload create tanzu-java-web-app \
 --git-repo https://github.com/iamboyoungkim/tanzu-java-web-app-hd \
@@ -49,34 +48,25 @@ tanzu apps workload create tanzu-java-web-app \
 tanzu apps workload list
 ```
 
-> 방금 생성한 "tanzu-java-web-app" 워크로드 조회 (워크로드 명 확인)
+![](../images/tap-workload-02.png)
+
+> 방금 생성한 "tanzu-java-web-app" 로그 조회
 ```cmd
-tanzu apps workload get tanzu-java-web-app
+tanzu apps workload tail tanzu-java-web-app --timestamp --since 1h
 ```
+
+실시간으로 출력되는 로그를 확인할 수 있습니다.    
+![](../images/tap-workload-03.png)
 
 TAP에서 수행되는 모든 행위들은 pod 기반으로 작동됩니다. git에서 참조하는 애플리케이션 소스를 기반으로 빌드를 수행해 주는 pod가 실행되고 있음을 알 수 있습니다.
 ```cmd
 kubectl get pod
 ```
 다음과 같은 화면이 출력될 것입니다.
-![](../images/tap-02.png)
-
-빌드 pod 안에서 구동되는 여러 컨테이너들이 순차적으로 작업을 수행하게 되고, 이 작업이 완료되기까지 약 5~10분 정도 소요됩니다.
-
-빌드가 완료되고 나면 컨테이너가 생성되는데, 워크로드가 생성되는 일련의 과정들에 대한 로그 조회는 다음과 같은 커맨드로 확인 가능합니다.
-```cmd
-tanzu apps workload tail tanzu-java-web-app
-```
-![](../images/tap-03.png)
-
-
-모든 작업이 완료되고 나면 pod 조회 시 다음과 같은 화면이 출력됩니다.
-```cmd
-kubectl get pod
-```
 ![](../images/tap-04.png)
 
-워크로드가 실행될 애플리케이션 파드가 보이지 않습니다. TAP가 생성한 pod들은 knative (serverless) 기반이기 때문에, 실제 호출이 일어나지 않으면 pod가 생성되지 않습니다.
+처음 빌드할 경우, 빌드 pod 안에서 구동되는 여러 컨테이너들이 순차적으로 작업을 수행하게 되고, 이 작업이 완료되기까지 약 5~10분 정도 소요될 수 있습니다.
+
 
 
 로컬 PC에서 앱 호출을 확인하기 위해 /etc/hosts에 아래와 같이 추가하겠습니다.
