@@ -42,6 +42,7 @@ OOTB Basic Supply Chain을 Testing and Scanning으로 변경합니다.
 - [IDE 설치하기](./tap/ide.md)
 - [동적 배포와 원격 디버깅](./tap/hotdeploy_debug.md)
 
+## 7. API Auto Registration (Demo)
 
 
 
