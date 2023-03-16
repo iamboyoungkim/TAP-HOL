@@ -51,6 +51,8 @@ imagePullSecrets:
 tap-values.yaml의 ootb_supply_chain 항목을 다음과 같이 수정합니다. (supply chain은 다시 basic으로 수정합니다) <br/>
 GIT-USERNAME에는 본인의 github 계정 정보를 입력하며, 이때 본인의 계정 아래에 tanzu-java-web-app-hd 라는 Repository가 있는지 확인하고 진행합니다.
 ~~~/su/
+supply_chain: basic
+
 ootb_supply_chain_basic:
    gitops:
      server_address: https://github.com/
@@ -91,7 +93,7 @@ Supply Chain으로 가면 이전과 달리 Config Writer와 Pull Config 사이�
 아래 이미지 수정    
 ![](../images/gitops-approval-1.png)
 
-아래의 Approve a Request 버튼을 클릭하면 Github로 연결됩니다.
+Approve a Request 버튼을 클릭하면 Github로 연결됩니다.    
 ![](../images/gitops-approval-2.png)
 
 위 사진과 같이 설정했던 리뷰 문구가 표시되고, commit 내용 및 변경된 파일 확인, comment 작성, merge 수행 등이 가능합니다. <br/>
