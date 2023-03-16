@@ -11,7 +11,7 @@
 
 ## 0. 환경 정보 확인
 ### 0. 접속정보
-Microsoft Remote Desktop에 접속합니다. 바탕화면의 접속정보.txt 파일을 클릭하면 HOL 환경에 접근하는 방법을 확인 가능합니다.    
+Microsoft Remote Desktop에 접속합니다. 바탕화면의 접속정보.txt 파일을 클릭하면 HOL 환경에 접근하는 방법을 확인할 수 있습니다.    
 
 ### 1. Jumpbox 접속
 Tanzu Kubernetes Grid 및 Tanzu Application Platform을 사용하기 위해서는 Jumpbox VM이 필요합니다.    
@@ -24,10 +24,10 @@ Tanzu Application Platform에서 Tanzu CLI를 사용해 TAP가 성공적으로 �
 ~~~
 tanzu package installed list -A
 ~~~
-아래 캡쳐와 같이 namespace에 설치된 package들의 status가 Reconcile Succeed 라면 다음 단계로 이동합니다.
+아래 캡쳐와 같이 namespace에 설치된 package들의 status가 Reconcile Succeed 이라면 다음 단계로 이동합니다.
 ![](../images/package_installed.png)  
 
-해당 환경에서 tap-install은 TAP 구성요소 설치를 위한 네임스페이스이며, default는 기타 open source package, tkg-system은 TKG 구성요소 설치를 위한 네임스페이스 입니다.   
+해당 환경에서 tap-install은 TAP 구성요소 설치를 위한 네임스페이스이며, default는 기타 open source package, tkg-system은 TKG 구성요소 설치를 위한 네임스페이스입니다.   
 
 ### 3. TAP GUI 접속 확인
 데스크탑에서 크롬을 클릭하면 상단 즐겨찾기에서 tap-gui 를 확인 가능합니다. 클릭하면 다음과 같은 화면으로 접속됩니다.    
@@ -37,6 +37,6 @@ Enter를 클릭하면 TAP의 Main 화면으로 이동합니다.
 ![](../images/tap-gui-02.png)  
 
 
-위와 같은 캡쳐가 나오면 TAP가 성공적으로 설치된 것입니다.   
+위와 같은 캡처가 나오면 TAP가 성공적으로 설치된 것입니다.   
 <br/>
 본 단계를 성공적으로 마치셨습니다.
