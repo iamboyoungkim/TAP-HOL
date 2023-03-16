@@ -13,7 +13,7 @@ TAP GUI에 접속합니다.
 
 등록할 컴포넌트 정보를 가지고 있는 yaml 파일의 URL을 입력하고, "ANALYZE" 버튼을 클릭합니다.
 
-URL: [https://github.com/iamboyoungkim/tanzu-java-web-app-hd/blob/main/catalog-info.yaml](https://github.com/iamboyoungkim/tanzu-java-web-app-hd/blob/main/catalog/catalog-info.yaml)
+URL: https://github.com/iamboyoungkim/tanzu-java-web-app-hd/blob/main/catalog/*.yaml
 
 ![](../images/catalog-2.png)
 
