@@ -5,8 +5,8 @@
 * Tanzu CLI 명령을 실행하여 앱을 배포합니다.
 * 앱의 빌드 및 런타임 로그를 봅니다.
 * 브라우저에서 배포된 앱을 확인합니다.
-* tanzu-java-web-app accelerator를 본인의 로컬로 다운로드 합니다.
-* 개인 Git 저장소에 업로드 합니다. 
+* tanzu-java-web-app accelerator를 본인의 로컬로 다운로드합니다.
+* 개인 Git 저장소에 업로드합니다. 
 * TAP GUI에서 app live view를 보기 위한 app을 배포합니다.
 
 
@@ -17,11 +17,11 @@
 
 이번 랩에서는 tanzu CLI 파일을 작성하여 워크로드를 생성하는 방법으로 랩을 진행합니다.
 앱 소스는 아래 git에서 가져옵니다. (https://github.com/iamboyoungkim/tanzu-java-web-app-hd)
-해당 git repo는 실습자분의 git repo가 아니며 앱배포를 손쉽게 테스트를 시작하기 위한 repo입니다.
+해당 git repo는 실습자분의 git repo가 아니며 앱 배포를 손쉽게 테스트를 시작하기 위한 repo입니다.
 
 
 <br/>
-**주의 : namespace는 앞에서 워크로드 배포를 위한 개발자용 네임스페이스 구성시 설정했던 namespace로 사용합니다.** <br/>
+**주의 : namespace는 앞에서 워크로드 배포를 위한 개발자용 네임스페이스 구성 시 설정했던 namespace로 사용합니다.** <br/>
 
 ```cmd
 tanzu apps workload create tanzu-java-web-app \
@@ -62,11 +62,11 @@ tanzu apps workload list
 ![](../images/tap-workload-02.png)
 
 
-TAP에서 수행되는 모든 행위들은 pod 기반으로 작동됩니다. git에서 참조하는 애플리케이션 소스를 기반으로 빌드를 수행해 주는 pod가 실행되고 있음을 알 수 있습니다.
+TAP에서 수행되는 모든 행위는 pod 기반으로 작동됩니다. git에서 참조하는 애플리케이션 소스를 기반으로 빌드를 수행해 주는 pod가 실행되고 있음을 알 수 있습니다.
 ```cmd
 kubectl get pod
 ```
-다음과 같이 pod를 확인 가능합니다.
+다음과 같이 pod를 확인할 수 있습니다.
 ![](../images/tap-workload-04.png)
 
 처음 빌드할 경우, 빌드 pod 안에서 구동되는 여러 컨테이너들이 순차적으로 작업을 수행하게 되고, 이 작업이 완료되기까지 약 5~10분 정도 소요될 수 있습니다.
@@ -76,7 +76,8 @@ kubectl get pod
 tanzu apps workload tail tanzu-java-web-app --timestamp --since 1h
 ```
 
-실시간으로 출력되는 로그를 확인할 수 있습니다.    
+실시간으로 출력되는 로그를 확인할 수 있습니다. 
+
 ![](../images/tap-workload-03.png)
 
 로그가 끝나면, tanzu apps workload get 명령어를 통해 조회합니다.
@@ -150,9 +151,10 @@ tanzu apps workload apply -f workload.yaml
 ```
 
 "y" 를 입력하고 계속해서 워크로드 생성을 진행합니다.
+
 ![](../images/workload-apply.png)
 
-CLI 과정과 동일하게, 로그를 조회하고 배포되면 URL을 통해 최종 확인합니다.   
+CLI 과정과 동일하게, 로그를 조회하고 배포되면 URL을 통해 최종적으로 확인합니다.   
 
-본 단계를 성공적으로 마무리 하셨습니다.   
+본 단계를 성공적으로 마무리하셨습니다.   
 
