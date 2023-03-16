@@ -3,13 +3,8 @@
 이번 실습에서는 이전 단계에서 배포한 워크로드를 TAP GUI에서 확인해 보는 실습을 진행합니다.
 
 ### 1. TAP GUI 접속
-다음 링크를 클릭하여 TAP GUI에 접속합니다.
+TAP GUI에 접속합니다.
 
-URL: http://tap-gui.tanzukr.com/
-
-최초 접속 화면은 다음과 같습니다. "Enter" 버튼을 클릭합니다.
-
-<img src="/images/catalog1.png" width="50%" height="50%" />
 
 ### 2. TAP GUI에서 워크로드 등록
 
@@ -18,15 +13,13 @@ URL: http://tap-gui.tanzukr.com/
 
 등록할 컴포넌트 정보를 가지고 있는 yaml 파일의 URL을 입력하고, "ANALYZE" 버튼을 클릭합니다.
 
-URL: https://github.com/kshong05311129/tanzu-java-web-app-tap-hol/tree/master/catalog/*.yaml
+URL: https://github.com/iamboyoungkim/tanzu-java-web-app-hd/blob/main/catalog-info.yaml
 
-![](../images/catalog3.png)
+![](../images/catalog-2.png)
 
-등록된 컴포넌트의 내용을 확인하고 "IMPORT" 버튼을 클릭합니다.
-![](../images/catalog4.png)
+등록된 컴포넌트의 내용을 확인하고 "IMPORT" 버튼을 클릭합니다.       
 
-이제 컴포넌트 등록이 완료되었습니다.
-![](../images/catalog5.png)
+이제 컴포넌트 등록이 완료되었습니다.        
 
 ### 3. TAP GUI에서 워크로드 조회
 홈 메뉴로 돌아가서, 내가 생성한 워크로드가 등록되었는지 확인하고, 워크로드 명을 클릭하여 워크로드를 조회합니다.
