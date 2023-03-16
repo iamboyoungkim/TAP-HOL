@@ -37,6 +37,18 @@ tanzu apps workload create tanzu-java-web-app \
 
 위 사진과 같이 workload가 생성됩니다. 아래 log 보기 명령어와 status 보기 명령어를 참고해 배포 상태를 조회합니다.
 
+**주의 : 만약 pod가 계속 떠 있도록 하고 싶다면, 아래와 같이 minScale 값을 조정 가능합니다.** <br/>
+```cmd
+tanzu apps workload create tanzu-java-web-app \
+--git-repo https://github.com/iamboyoungkim/tanzu-java-web-app-hd \
+--git-branch main \
+--type web \
+--label app.kubernetes.io/part-of=tanzu-java-web-app \
+--annotation autoscaling.knative.dev/minScale=1 \
+--yes \
+--namespace default
+```
+
 
 
 ### 2. 로그 확인
