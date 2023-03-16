@@ -12,7 +12,8 @@ Tanzu Application Platform Hands-On-Labs 페이지 입니다.
   - AKS / EKS / GKE / Minikube / TKGm / TKGs (vSphere with Tanzu v7.0 U3a)
 
 
-## 0. 환경 확인
+## 0. Context 변경
+- [클러스터 확인 및 context 변경](./install/context.md)
 
 
 ## 1. TAP 환경 확인 및 구성
