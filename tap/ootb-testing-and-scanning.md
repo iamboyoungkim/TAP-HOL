@@ -6,7 +6,7 @@
 * 클러스터에 Tekton 파이프라인을 추가하고, 파이프라인을 가리키도록 워크로드를 업데이트 하여 오류를 해결합니다.
 * OOTB Supply Chain - Testing and Scanning을 설치합니다.
 * 취약점 및 종속성을 쿼리합니다.
-* [참고 링크](https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.2/tap/GUID-getting-started-add-test-and-security.html)
+* [참고 링크](https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.4/tap/getting-started-add-test-and-security.html)
 
 
 
