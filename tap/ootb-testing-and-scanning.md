@@ -126,32 +126,35 @@ tanzu package installed list -n tap-install
 아래와 같이 ootb-supply-chain-testing-scanning 이 적용되었음을 확인합니다.
 ![](../images/supply_chain_testing-scanning.png)
 
-### 4) Grype overlay 적용
-실습 환경은 custom CA를 사용하기 때문에 Grype scanner를 사용하기 위한 추가적인 설정이 필요합니다. <br/>
-먼저 tap-values.yaml에 다음 코드를 추가합니다.
-
+### 4) Metadata Store 설정
+Scan 결과를 저장하기 위해 Metadata store에 대한 설정이 필요합니다.    
+먼저, metadata store에 read/write 하기 위한 access token을 얻어옵니다. 이 토큰은 기본적으로 설치되어 있습니다.    
 ~~~
-package_overlays:
-  - name: "grype"
-    secrets:
-      - name: "grype-offline"
+kubectl get secrets metadata-store-read-write-client -n metadata-store -o jsonpath="{.data.token}" | base64 -d
 ~~~
 
-Jumpbox의 ~/tap-install/supplychain_test_scanning/grype/patch.yaml 파일 중 GRYPE_DB_UPDATE_URL 항목을 아래와 같이 수정합니다.
+조회 결과 나온 토큰 값을 메모합니다.    
+<br/>
+다음으로 tap-values.yaml 파일을 다음과 같이 수정합니다. ACCESS-TOKEN에 메모해놓았던 토큰 값을 입력합니다.   
 ~~~
-- name: GRYPE_DB_UPDATE_URL
-  value: https://toolbox-data.anchore.io/grype/databases/listing.json
+tap_gui:
+  app_config:
+    proxy:
+      /metadata-store:
+        target: https://metadata-store-app.metadata-store:8443/api/v1
+        changeOrigin: true
+        secure: false
+        headers:
+          Authorization: "Bearer ACCESS-TOKEN"
+          X-Custom-Source: project-star
 ~~~
 
-수정된 파일을 적용합니다. 
-~~~
-kubectl apply -f patch.yaml
-~~~
+예시는 아래와 같습니다.
+![](../images/bearer-token-ex.png)
 
-다음 명령어를 실행해 annotate를 추가합니다.
-
+설정한 profile로 tap 패키지를 업데이트합니다.
 ~~~
-kubectl annotate pkgi tap ext.packaging.carvel.dev/ytt-paths-from-secret-name.1=grype-offline -n tap-install
+tanzu package installed update tap -p tap.tanzu.vmware.com -v 1.4.1 --values-file tap-values.yaml -n tap-install
 ~~~
 
 ### 5) 애플리케이션 배포
@@ -174,4 +177,14 @@ tanzu apps workload get 명령어로 조회하면 이전과 다르게 Resource�
 
 GUI로 이동해 Supply Chain을 확인합니다. 만약 violation이 발견되었다면 아래 사진과 같이 표시됩니다.
 ![](../images/supply_chain_scan_result.png)
+![](../images/supply_chain_scan_result-2.png)
+
+
+### 6) 보안 위반사항 확인
+Tanzu Application Platform GUI의 Security Analysis 탭에서 모든 CVE 위반 사항을 모아 볼 수 있습니다.   
+현재는 1개의 CVE가 표시됩니다.    
+![](../images/cve-details.png)
+
+
+
 
