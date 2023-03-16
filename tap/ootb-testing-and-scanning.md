@@ -114,7 +114,7 @@ tap-values.yaml 에서 supply chain에 대한 정보가 있는 Line을 다음과
 
 설정한 profile로 tap 패키지를 업데이트합니다.
 ~~~
-tanzu package installed update tap -p tap.tanzu.vmware.com -v 1.2.1 --values-file tap-values.yaml -n tap-install
+tanzu package installed update tap -p tap.tanzu.vmware.com -v 1.4.1 --values-file tap-values.yaml -n tap-install
 ~~~
 
 패키지가 적용되었는지 다음 명령어를 통해 확인합니다.
@@ -123,7 +123,8 @@ tanzu package installed update tap -p tap.tanzu.vmware.com -v 1.2.1 --values-fil
 tanzu package installed list -n tap-install
 ~~~
 
-아래와 같이 ootb-supply-chain-testing이 적용되었음을 확인합니다.
+아래와 같이 ootb-supply-chain-testing-scanning 이 적용되었음을 확인합니다.
+![](../images/supply_chain_testing-scanning.png)
 
 ### 4) Grype overlay 적용
 실습 환경은 custom CA를 사용하기 때문에 Grype scanner를 사용하기 위한 추가적인 설정이 필요합니다. <br/>
