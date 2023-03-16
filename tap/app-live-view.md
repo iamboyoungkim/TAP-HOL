@@ -22,8 +22,8 @@ pom.xml 파일에 다음 artifact가 추가되었는지 확인합니다.
 Application Live View에 접속하는 순서는 다음과 같습니다.
 - TAP GUI 내의 Organization Catalog 메뉴에서 카탈로그 선택
 - "Runtime Resources" 탭 선택
-- Kind에서 "Pod"를 체크하고 조회할 Pod 선택 ![](../images/alv-search-01.png)
-- Live View 섹션에서 Actuator 엔드포인트를 선택하여 모니터링 및 간단한 트러블슈팅 정보 확인 ![](../images/alv-search-02.png)
+- Kind에서 "Pod"를 체크하고 조회할 Pod 선택 
+- Live View 섹션에서 Actuator 엔드포인트를 선택하여 모니터링 및 간단한 트러블슈팅 정보 확인
 
 #### 2) Application Live View 둘러보기
 
