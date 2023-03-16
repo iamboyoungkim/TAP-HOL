@@ -9,7 +9,7 @@ TAP GUI에 접속합니다.
 ### 2. TAP GUI에서 워크로드 등록
 
 홈 화면에 접속하였습니다. 이전에 생성한 워크로드 등록을 위하여 "REGISTRY ENTITY" 버튼을 클릭합니다.
-![](../images/catalog2.png)
+![](../images/catalog-new.png)
 
 등록할 컴포넌트 정보를 가지고 있는 yaml 파일의 URL을 입력하고, "ANALYZE" 버튼을 클릭합니다.
 
