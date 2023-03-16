@@ -37,16 +37,17 @@ tanzu package installed list -n tap-install
 ~~~
 
 아래와 같이 ootb-supply-chain-testing이 적용되었음을 확인합니다.
-![](../images/Supply_chain_testing.png)
+![](../images/supply_chain_testing.png)
 
 ### 2) Tekton Pipeline 설정
 
-다음 단계로는 Tekton Pipeline을 업데이트 합니다. 예시 yaml은 Jumpbox의 ~/tap-install/supplychain_test_scanning/tekton_pipeline.yaml 혹은 [링크](../install/tekton_pipeline.yaml) 에서 확인 가능합니다. 해당 Yaml 파일을 적용합니다.
+다음 단계로는 Tekton Pipeline을 업데이트 합니다. 예시 yaml은 [링크](../install/tekton_pipeline.yaml) 에서 확인 가능합니다. 해당 Yaml 파일을 적용합니다.
 
 ~~~
 kubectl apply -f tekton_pipeline.yaml)
 ~~~
 
+pipeline.tekton.dev/developer-defined-tekton-pipeline created 문구를 확인합니다.    
 yaml 파일에 정의된 step을 통해 개발자 워크로드에 표시된 repository 에서 코드를 가져오고 repository 내에서 테스트를 실행합니다. Tekton 파이프라인의 단계는 구성 변경이 가능하며 개발자가 코드를 테스트하는 데 필요한 추가 항목을 추가할 수 있습니다.
 
 
@@ -55,12 +56,13 @@ yaml 파일에 정의된 step을 통해 개발자 워크로드에 표시된 repo
 다음 단계로는 워크로드를 새로운 supply chain과 연결 해야 합니다. 다음 명령어를 통해 수행합니다.
 
 ~~~
-tanzu apps workload create tanzu-java-web-app \
-  --git-repo https://github.com/sample-accelerators/tanzu-java-web-app \
+tanzu apps workload create tanzu-java-web-app-testing \
+  --git-repo https://github.com/iamboyoungkim/tanzu-java-web-app-hd \
   --git-branch main \
   --type web \
   --label app.kubernetes.io/part-of=tanzu-java-web-app \
   --label apps.tanzu.vmware.com/has-tests=true \
+  --annotation autoscaling.knative.dev/minScale=1 \
   --yes \
   --namespace default
 ~~~
