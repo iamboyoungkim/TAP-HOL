@@ -91,7 +91,7 @@ tanzu package installed get grype -n tap-install
 
 ### 2) ScanPolicy
 ScanPolicy는 아래의 템플릿을 이용하여 설치합니다. 해당 탬플릿의 경우 notAllowedSeverities := ["Critical","High","UnknownSeverity"]를 사용하여 중요, 높음 및 알 수 없는 등급의 CVE가 발견된 경우 Supply Chain을 타단합니다. <br/>
-ScanPolicy 템플릿은 Jumpbox의 ~/tap-install/supplychain_test_scanning 혹은 [여기](../install/scanpolicy.yaml)에서 확인할 수 있습니다.
+ScanPolicy 템플릿은 [여기](../install/scanpolicy.yaml)에서 확인할 수 있습니다.
 
 ~~~
 kubectl apply -f scanpolicy.yaml
@@ -158,17 +158,18 @@ kubectl annotate pkgi tap ext.packaging.carvel.dev/ytt-paths-from-secret-name.1=
 다음 단계로는 워크로드를 새로운 supply chain과 연결 해야 합니다. 다음 명령어를 통해 수행합니다.
 
 ~~~
-tanzu apps workload create tanzu-java-web-app \
-  --git-repo https://github.com/sample-accelerators/tanzu-java-web-app \
+tanzu apps workload create tanzu-java-web-app-ts \
+  --git-repo https://github.com/iamboyoungkim/tanzu-java-web-app-hd \
   --git-branch main \
   --type web \
   --label app.kubernetes.io/part-of=tanzu-java-web-app \
   --label apps.tanzu.vmware.com/has-tests=true \
+  --annotation autoscaling.knative.dev/minScale=1 \
   --yes \
   --namespace default
 ~~~
 
-tanzu apps workload get 명령어로 조회하면 이전과 다르게 Resource에 source-scanner 및 image-scanner가 추가되었으며 pod도 마찬가지로 2개 추가 (source 및 image 스캔용) 되었음을 확인 가능합니다.
+tanzu apps workload get 명령어로 조회하면 이전과 다르게 Resource에 source-scanner 및 image-scanner가 추가되었으며 scan 용 pod도 추가 되었음을 확인 가능합니다.
 ![](../images/supply_chain_scan_cli.png)
 
 GUI로 이동해 Supply Chain을 확인합니다. 만약 violation이 발견되었다면 아래 사진과 같이 표시됩니다.
