@@ -87,7 +87,7 @@ tanzu package installed get scanning -n tap-install
 tanzu package installed get grype -n tap-install
 ~~~
 
-설치되지 않았을 경우, [다음 링크](https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.2/tap/GUID-scst-scan-install-scst-scan.html)를 참고해 설치를 진행 후 다음 단계로 넘어갑니다.
+설치되지 않았을 경우, [다음 링크](https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.4/tap/scst-scan-install-scst-scan.html) 를 참고해 설치를 진행 후 다음 단계로 넘어갑니다.
 
 ### 2) ScanPolicy
 ScanPolicy는 아래의 템플릿을 이용하여 설치합니다. 해당 탬플릿의 경우 notAllowedSeverities := ["Critical","High","UnknownSeverity"]를 사용하여 중요, 높음 및 알 수 없는 등급의 CVE가 발견된 경우 Supply Chain을 타단합니다. <br/>
@@ -96,6 +96,8 @@ ScanPolicy 템플릿은 Jumpbox의 ~/tap-install/supplychain_test_scanning 혹�
 ~~~
 kubectl apply -f scanpolicy.yaml
 ~~~
+
+scanpolicy.scanning.apps.tanzu.vmware.com/scan-policy configured 메시지를 확인합니다.   
 
 ### 3) tap-values.yaml 변경
 tap-values.yaml 에서 supply chain에 대한 정보가 있는 Line을 다음과 같이 업데이트합니다.
