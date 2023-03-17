@@ -90,7 +90,6 @@ tanzu apps workload get tanzu-java-web-app
 
 이제 앱을 호출해 보도록 하겠습니다.
 
-URL: https://tanzu-java-web-app.default.tanzu.lab
 
 웹페이지는 아래와 같이 나타나게 됩니다.
 
