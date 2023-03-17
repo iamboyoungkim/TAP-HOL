@@ -11,11 +11,6 @@ Tanzu Application Platform Hands-On-Labs 페이지 입니다.
   - Kubernetes v1.23 ~ v1.25
   - AKS / EKS / GKE / Minikube / TKGm / TKGs (vSphere with Tanzu v7.0 U3a)
 
-
-## 0. Context 변경
-- [클러스터 확인 및 context 변경](./install/context.md)
-
-
 ## 1. TAP 환경 확인 및 구성
 - [설치 환경 확인](./install/check.md)
 - [개발자용 네임스페이스 설정](./install/dev-namespace.md)
