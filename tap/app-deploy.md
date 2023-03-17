@@ -5,9 +5,6 @@
 * Tanzu CLI 명령을 실행하여 앱을 배포합니다.
 * 앱의 빌드 및 런타임 로그를 봅니다.
 * 브라우저에서 배포된 앱을 확인합니다.
-* tanzu-java-web-app accelerator를 본인의 로컬로 다운로드합니다.
-* 개인 Git 저장소에 업로드합니다. 
-* TAP GUI에서 app live view를 보기 위한 app을 배포합니다.
 
 
 ### 1.앱 배포
