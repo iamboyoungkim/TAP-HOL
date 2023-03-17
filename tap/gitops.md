@@ -91,18 +91,21 @@ tanzu apps workload create tanzu-java-web-app-git \
 ### 1) GUI의 Supply Chain 화면 접속
 workload 배포 후, TAP GUI의 Supply Chain으로 가면 Delivery 단계에서 빨간색 느낌표 표시를 확인할 수 있습니다.    
 아직 approval 단계를 거치지 않았기 때문입니다.
+
 ![](../images/gitops-approval-1.png)
 
 ### 2) PR 확인
 Github 로 이동해, 해당 repository 에서 pull request를 확인하고, merge 합니다.  
+
 ![](../images/gitops-approval-2.png)
 
 위 사진과 같이 설정했던 리뷰 문구가 표시되고, commit 내용 및 변경된 파일 확인, comment 작성, merge 수행 등이 가능합니다. <br/>
 이 중 Merge 작업을 수행합니다.
 
 ## 3. 워크로드 재배포 과정 확인
-Merge 이후 터미널로 돌아와 tanzu apps workload get 명령어로 조회하면 해당 Workload가 다시 배포되는 것을 확인할 수 있습니다. Build pod가 최근에 증가되었고, Knative Service 아래에 해당 app 접근 가능한 Url이 표시됩니다.   
+Merge 이후 터미널로 돌아와 tanzu apps workload get 명령어로 조회하면 해당 Workload가 다시 배포되는 것을 확인할 수 있습니다. Build pod가 최근에 증가하었고, Knative Service 아래에 해당 app 접근 가능한 Url이 표시됩니다. 
+
 ![](../images/gitops-final.png)
 
-소스코드의 변경이 있을때도 동일하게 approval 과정을 거쳐 build pod가 다시 생성되는 workload 재배포 과정을 거치게 됩니다.    
-TAP GUI에서도 성공적으로 배포된 모습을 확인 가능합니다.   
+소스코드의 변경이 있을 때도 동일하게 approval 과정을 거쳐 build pod가 다시 생성되는 workload 재배포 과정을 거치게 됩니다.    
+TAP GUI에서도 성공적으로 배포된 모습을 확인할 수 있습니다.
