@@ -3,7 +3,7 @@
 본 과정에서는 TAP (Tanzu Application Platform)의 OOTB Supply Chain을 basic에서 testing 및 testing_and_scanning으로 변경하는 방법에 대해 알아보겠습니다.
 
 * OOTB Supply Chain - Testing을 설치합니다.
-* 클러스터에 Tekton 파이프라인을 추가하고, 파이프라인을 가리키도록 워크로드를 업데이트 하여 오류를 해결합니다.
+* 클러스터에 Tekton 파이프라인을 추가하고, 파이프라인을 가리키도록 워크로드를 업데이트하여 오류를 해결합니다.
 * OOTB Supply Chain - Testing and Scanning을 설치합니다.
 * 취약점 및 종속성을 쿼리합니다.
 * [참고 링크](https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.4/tap/getting-started-add-test-and-security.html)
@@ -37,23 +37,24 @@ tanzu package installed list -n tap-install
 ~~~
 
 아래와 같이 ootb-supply-chain-testing이 적용되었음을 확인합니다.
+
 ![](../images/supply_chain_testing.png)
 
 ### 2) Tekton Pipeline 설정
 
-다음 단계로는 Tekton Pipeline을 업데이트 합니다. 예시 yaml은 [링크](../install/tekton_pipeline.yaml) 에서 확인 가능합니다. 해당 Yaml 파일을 적용합니다.
+다음 단계로는 Tekton Pipeline을 업데이트합니다. 예시 yaml은 [링크](../install/tekton_pipeline.yaml) 에서 확인가능합니다. 해당 Yaml 파일을 적용합니다.
 
 ~~~
 kubectl apply -f tekton_pipeline.yaml)
 ~~~
 
 pipeline.tekton.dev/developer-defined-tekton-pipeline created 문구를 확인합니다.    
-yaml 파일에 정의된 step을 통해 개발자 워크로드에 표시된 repository 에서 코드를 가져오고 repository 내에서 테스트를 실행합니다. Tekton 파이프라인의 단계는 구성 변경이 가능하며 개발자가 코드를 테스트하는 데 필요한 추가 항목을 추가할 수 있습니다.
+yaml 파일에 정의된 step을 통해 개발자 워크로드에 표시된 repository에서 코드를 가져오고 repository 내에서 테스트를 실행합니다. Tekton 파이프라인의 단계는 구성 변경이 가능하며 개발자가 코드를 테스트하는 데 필요한 추가 항목을 추가할 수 있습니다.
 
 
 ### 3) 애플리케이션 배포
 
-다음 단계로는 워크로드를 새로운 supply chain과 연결 해야 합니다. 다음 명령어를 통해 수행합니다.
+다음 단계로는 워크로드를 새로운 supply chain과 연결해야 합니다. 다음 명령어를 통해 수행합니다.
 
 ~~~
 tanzu apps workload create tanzu-java-web-app-testing \
@@ -67,13 +68,16 @@ tanzu apps workload create tanzu-java-web-app-testing \
   --namespace default
 ~~~
 
-배포가 끝난 후 tanzu apps workload get 명령어로 조회하면 이전과 다르게 Resource에 source-tester가 추가되었으며 pod에도 test-pod가 succeed 되었음을 확인 가능합니다.
+배포가 끝난 후 tanzu apps workload get 명령어로 조회하면 이전과 다르게 Resource에 source-tester가 추가되었으며 pod에도 test-pod가 succeed 되었음을 확인하 수 있습니다.
+
 ![](../images/supply_chain_test_result.png)
 
 GUI로 이동해 Supply Chain을 확인합니다.
+
 ![](../images/supply_chain_test_gui_01.png)
 
 각 테스트의 id를 클릭해 detail 정보를 확인할 수 있습니다.
+
 ![](../images/supply_chain_test_gui_02.png)
 
 
@@ -90,7 +94,7 @@ tanzu package installed get grype -n tap-install
 설치되지 않았을 경우, [다음 링크](https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.4/tap/scst-scan-install-scst-scan.html) 를 참고해 설치를 진행 후 다음 단계로 넘어갑니다.
 
 ### 2) ScanPolicy
-ScanPolicy는 아래의 템플릿을 이용하여 설치합니다. 해당 탬플릿의 경우 notAllowedSeverities := ["Critical","High","UnknownSeverity"]를 사용하여 중요, 높음 및 알 수 없는 등급의 CVE가 발견된 경우 Supply Chain을 타단합니다. <br/>
+ScanPolicy는 아래의 템플릿을 이용하여 설치합니다. 해당 탬플릿의 경우 notAllowedSeverities := ["Critical","High","UnknownSeverity"]를 사용하여 중요, 높음 및 알 수 없는 등급의 CVE가 발견되었을 때 Supply Chain을 차단합니다. <br/>
 ScanPolicy 템플릿은 [여기](../install/scanpolicy.yaml)에서 확인할 수 있습니다.
 
 ~~~
@@ -124,6 +128,7 @@ tanzu package installed list -n tap-install
 ~~~
 
 아래와 같이 ootb-supply-chain-testing-scanning 이 적용되었음을 확인합니다.
+
 ![](../images/supply_chain_testing-scanning.png)
 
 ### 4) Metadata Store 설정
@@ -150,6 +155,7 @@ tap_gui:
 ~~~
 
 예시는 아래와 같습니다.
+
 ![](../images/bearer-token-ex.png)
 
 설정한 profile로 tap 패키지를 업데이트합니다.
@@ -158,7 +164,7 @@ tanzu package installed update tap -p tap.tanzu.vmware.com -v 1.4.1 --values-fil
 ~~~
 
 ### 5) 애플리케이션 배포
-다음 단계로는 워크로드를 새로운 supply chain과 연결 해야 합니다. 다음 명령어를 통해 수행합니다.
+다음 단계로는 워크로드를 새로운 supply chain과 연결해야 합니다. 다음 명령어를 통해 수행합니다.
 
 ~~~
 tanzu apps workload create tanzu-java-web-app-ts \
@@ -172,17 +178,21 @@ tanzu apps workload create tanzu-java-web-app-ts \
   --namespace default
 ~~~
 
-tanzu apps workload get 명령어로 조회하면 이전과 다르게 Resource에 source-scanner 및 image-scanner가 추가되었으며 scan 용 pod도 추가 되었음을 확인 가능합니다.
+tanzu apps workload get 명령어로 조회하면 이전과 다르게 Resource에 source-scanner 및 image-scanner가 추가되었으며 scan 용 pod도 추가되었음을 확인 가능합니다.
+
 ![](../images/supply_chain_scan_cli.png)
 
 GUI로 이동해 Supply Chain을 확인합니다. 만약 violation이 발견되었다면 아래 사진과 같이 표시됩니다.
+
 ![](../images/supply_chain_scan_result.png)
+
 ![](../images/supply_chain_scan_result-2.png)
 
 
 ### 6) 보안 위반사항 확인
 Tanzu Application Platform GUI의 Security Analysis 탭에서 모든 CVE 위반 사항을 모아 볼 수 있습니다.   
-현재는 1개의 CVE가 표시됩니다.    
+현재는 1개의 CVE가 표시됩니다. 
+
 ![](../images/cve-details.png)
 
 
