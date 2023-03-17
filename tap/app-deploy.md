@@ -91,13 +91,6 @@ tanzu apps workload get tanzu-java-web-app
 하단에서 배포된 app에 대한 URL을 확인할 수 있습니다.
 
 
-로컬 PC에서 앱 호출을 확인하기 위해 /etc/hosts에 아래와 같이 추가하겠습니다.    
-위치는 (C:)#Windows#System32#drivers#etc 아래의 host 파일입니다.    
-
-```cmd
-10.200.86.13 tanzu-java-web-app.default.tanzu.lab
-```
-
 이제 앱을 호출해 보도록 하겠습니다.
 
 URL: https://tanzu-java-web-app.default.tanzu.lab
