@@ -37,5 +37,7 @@ OOTB Basic Supply Chain을 Testing and Scanning으로 변경합니다.
 ## 6. 개발 환경 개선을 위한 IDE 경험
 - [동적 배포와 원격 디버깅](./tap/hotdeploy_debug.md)
 
+## 7. Acclerator 커스터마이징 (TBU)
 
+## 8. Multi Cluster (TBU, Demo)
 
