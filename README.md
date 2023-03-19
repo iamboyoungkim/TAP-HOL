@@ -39,5 +39,4 @@ OOTB Basic Supply Chain을 Testing and Scanning으로 변경합니다.
 
 ## 7. Acclerator 커스터마이징 (TBU)
 
-## 8. Multi Cluster (TBU, Demo)
 
