@@ -14,6 +14,11 @@
 
 ### 1) tap-values.yaml 변경
 
+파일 위치 : ~/tap-values-{user명}.yaml       
+예시 : user 1번 -> ~/tap-values-user01.yaml        
+
+**주의 : 다음부터 등장하는 tap-values.yaml 대신 본인의 파일명을 입력합니다.**        
+
 tap-values.yaml 에서 supply chain에 대한 정보가 있는 Line을 다음과 같이 업데이트합니다.
 ~~~
 - supply_chain: basic
